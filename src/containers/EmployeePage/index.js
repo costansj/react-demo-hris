@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { readEmployees } from '../../actions';
 import './styles.css';
+import { EmployeeTable } from '../../components';
 
 
 class EmployeePage extends Component {
@@ -10,8 +11,26 @@ class EmployeePage extends Component {
         super(props);
         this.state = {
             employees: [],
-            onView: false
+            onView: false,
+            onView2: false,
+            onView3: false,
+            onView4: false,
+            selectedKey: '',
+            onEdit: false
         }
+    }
+
+    handleSaveForm() {
+        this.setState({
+            onEdit: !this.state.onEdit,
+            onView: !this.state.onView
+        });
+    }
+
+    handleEditForm() {
+        this.setState({
+            onEdit: !this.state.onEdit
+        });
     }
 
     componentDidMount() {
@@ -25,6 +44,7 @@ class EmployeePage extends Component {
 
     renderData() {
         const employeeItem = this.props.employees.map(({ _id, personalDetails, jobDetails, benefitsDetails }) => {
+
             return (
                 <div key={_id} className="employee-card">
                     <div> {`${personalDetails.firstName} ${personalDetails.lastName}`} </div>
@@ -32,14 +52,20 @@ class EmployeePage extends Component {
                     <div> {jobDetails.title} </div>
                     {/* View */}
                     <button onClick={() => {
-                        this.setState({
-                            onView: true
-                        })
+                        this.setState({ selectedKey: _id, onView: !this.state.onView });
                     }}> View </button>
                     {/* Delete */}
                     <button onClick={() => { console.log("Delete") }}> Delete </button>
                     {
-                        this.state.onView ? this.renderTable(personalDetails, jobDetails, benefitsDetails) : null
+                        this.state.onView ? <EmployeeTable
+                            onEdit={this.state.onEdit}
+                            onView={this.state.onView}
+                            personalDetails={personalDetails}
+                            jobDetails={jobDetails}
+                            benefitsDetails={benefitsDetails}
+                            onEditForm={this.handleEditForm.bind(this)}
+                            onSaveForm={this.handleSaveForm.bind(this)}
+                        /> : null
                     }
                 </div>
             );
@@ -47,61 +73,9 @@ class EmployeePage extends Component {
         return employeeItem;
     }
 
-    renderTable(personalDetails, jobDetails, benefitsDetails) {
-        return (
-            <div>
-                <div>
-                    <h3> PERSONAL DETAILS</h3>
-                    <ul>
-                        <li> First Name {personalDetails.firstName}</li>
-                        <li> Middle Name {personalDetails.middleName}</li>
-                        <li> Last Name {personalDetails.lastName}</li>
-                        <li> Gender {personalDetails.gender}</li>
-                        <li> Title {personalDetails.titile}</li>
-                        <li> Address {`${personalDetails.address.unitNumber} ${personalDetails.address.street} ${personalDetails.address.city} ${personalDetails.address.province} ${personalDetails.address.region} ${personalDetails.address.zipCode} `}</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3> CONTACT DETAILS</h3>
-                    <ul>
-                        <li> Landline {personalDetails.contact.landlineNumber}</li>
-                        <li> Mobile Number {personalDetails.contact.mobileNumber}</li>
-                        <li> Email {personalDetails.contact.email}</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3> JOB DETAILS</h3>
-                    <ul>
-                        <li> Title {jobDetails.title}</li>
-                        <li> Employee Number {jobDetails.employeeNumber}</li>
-                        <li> Location {jobDetails.location}</li>
-                        <li> Department {jobDetails.department}</li>
-                        <li> Salary {jobDetails.salary}</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3> EMPLOYEE BENEFITS </h3>
-                    <ul>
-                        <li> SSS {benefitsDetails.SSS}</li>
-                        <li> PhilHealth{benefitsDetails.PhilHealth}</li>
-                        <li> PAGIBIG {benefitsDetails.PAGIBIG}</li>
-                        <li> BIR {benefitsDetails.BIR}</li>
-                    </ul>
-                </div>
-                {
-                    this.state.onEdit ? this.renderForm() : null
-                }
-                <button onClick={() => {
-                    this.setState({
-                        // onView: false,
-                        onEdit: true
-                    })
-                }}> Update </button>
-            </div>
-
-        )
+    renderView() {
+        return <EmployeeTable onView={this.state.onView} />
     }
-
 
     renderForm() {
         return (
