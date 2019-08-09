@@ -39,8 +39,8 @@ class App extends Component {
   render() {
     return (
       <MemoryRouter>
-        <Route exact path="/" component={LoginPage} />
-        <Route path="/employee" component={EmployeePage} />
+        <Route exact path="/" component={EmployeePage} />
+        <Route path="/login" component={LoginPage} />
       </MemoryRouter>
     );
   }

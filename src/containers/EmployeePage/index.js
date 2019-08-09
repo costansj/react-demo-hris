@@ -9,6 +9,12 @@ import {
 import "./styles.css";
 import { EmployeeTable } from "../../components";
 import EmployeeForm from "./EmployeeForm";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Typography from "@material-ui/core/Typography";
+import DialogContent from "@material-ui/core/DialogContent";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 
 class EmployeePage extends Component {
   constructor(props) {
@@ -41,12 +47,18 @@ class EmployeePage extends Component {
       SSS: "",
       Philhealth: "",
       PAGIBIG: "",
-      BIR: "",
-      data: []
+      BIR: ""
     };
     this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitData = this.submitData.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal() {
+    this.setState({
+      onView: !this.state.onView
+    });
   }
 
   handleSubmit(event) {
@@ -101,11 +113,6 @@ class EmployeePage extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-
-    console.log('trigger on change"');
-
-    console.log("event name", e.target.name);
-    console.log("event value", e.target.value);
   }
 
   handleEditForm() {
@@ -159,7 +166,8 @@ class EmployeePage extends Component {
                   SSS: benefitsDetails.SSS,
                   Philhealth: benefitsDetails.Philhealth,
                   PAGIBIG: benefitsDetails.PAGIBIG,
-                  BIR: benefitsDetails.BIR
+                  BIR: benefitsDetails.BIR,
+                  modalIsOpen: !this.state.modalIsOpen
                 });
               }}
             >
@@ -185,15 +193,37 @@ class EmployeePage extends Component {
               Delete
             </button>
             {this.state.onView && this.state.selectedKey === _id ? (
-              <EmployeeTable
-                // onEdit={this.state.onEdit}
-                // onView={this.state.onView}
-                personalDetails={personalDetails}
-                jobDetails={jobDetails}
-                benefitsDetails={benefitsDetails}
-                // onSaveForm={this.handleSaveForm.bind(this)}
-                onEditForm={this.handleEditForm.bind(this)}
-              />
+              <div>
+                <Dialog
+                  open={this.state.onView}
+                  style={{ backgroundColor: "rgba(0,0,0,0.2)" }}
+                >
+                  <DialogTitle
+                    disableTypography
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between"
+                    }}
+                  >
+                    <Typography variant="h6">Employee Details</Typography>
+                    <IconButton onClick={this.toggleModal}>
+                      <CloseIcon />
+                    </IconButton>
+                  </DialogTitle>
+                  <DialogContent dividers>
+                    <EmployeeTable
+                      // onEdit={this.state.onEdit}
+                      // onView={this.state.onView}
+                      personalDetails={personalDetails}
+                      jobDetails={jobDetails}
+                      benefitsDetails={benefitsDetails}
+                      // onSaveForm={this.handleSaveForm.bind(this)}
+                      onEditForm={this.handleEditForm.bind(this)}
+                    />
+                  </DialogContent>
+                </Dialog>
+              </div>
             ) : null}
             {this.state.onEdit && this.state.selectedKey === _id
               ? this.renderForm(personalDetails, jobDetails, benefitsDetails)

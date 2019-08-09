@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Typography from "@material-ui/core/Typography";
 
 class EmployeeTable extends Component {
   render() {
@@ -11,13 +12,13 @@ class EmployeeTable extends Component {
     return (
       <div>
         <div>
-          <h3> PERSONAL DETAILS</h3>
+          <Typography value="h3">PERSONAL DETAILS</Typography>
           <ul>
             <li> First Name {personalDetails.firstName}</li>
             <li> Middle Name {personalDetails.middleName}</li>
             <li> Last Name {personalDetails.lastName}</li>
             <li> Gender {personalDetails.gender}</li>
-            <li> Title {personalDetails.titile}</li>
+            <li> Title {personalDetails.title}</li>
             <li>
               Address
               {`${personalDetails.address.unitNumber} ${

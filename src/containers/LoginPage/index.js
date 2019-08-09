@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import { Link } from "react-router-dom";
-import Card from "@material-ui/core/Card";
-//import Container from "@material-ui/core/Container";
+//import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -9,24 +9,35 @@ import TextField from "@material-ui/core/TextField";
 class LoginPage extends Component {
   render() {
     return (
-      <div>
+      <Container maxWidth="xl">
         <Grid
           container
           spacing={0}
-          align="center"
+          alignItems="center"
           justify="center"
           direction="column"
         >
-          <Card>
-            <TextField id="username" label="User Name" variant="filled" />
+          <Grid item>
+            <TextField
+              id="username"
+              label="User Name"
+              variant="filled"
+              style={{ margin: "2rem 0 0 0" }}
+            />
+          </Grid>
+          <Grid item>
             <TextField
               id="userpass"
               label="Password"
               type="password"
               variant="filled"
+              style={{ margin: ".5rem 0 0 0" }}
             />
+          </Grid>
+          <Grid item>
             <Button
               variant="contained"
+              style={{ margin: ".5rem 0 0 0" }}
               onClick={() => {
                 this.props.history.push("/employee");
                 // return <Link to="/employee" />;
@@ -34,9 +45,9 @@ class LoginPage extends Component {
             >
               Submit
             </Button>
-          </Card>
+          </Grid>
         </Grid>
-      </div>
+      </Container>
     );
   }
 }
