@@ -1,0 +1,49 @@
+{
+  "info": {
+    "_postman_id": "bbcc81f8-befa-440f-8b9c-7ae6b80ffe7b",
+    "name": "React Demo HRIS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "CREATE Employee",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"personalDetails\": {\n        \"firstName\": \"Diana\",\n        \"lastName\": \"Cuerto\",\n        \"middleName\": \"Filamina\",\n        \"gender\": \"Female\",\n        \"title\": \"Ms\",\n        \"address\": {\n            \"unitNumber\": \"3-F\",\n            \"street\": \"Alley 28\",\n            \"city\": \"Quezon City\",\n            \"province\": \"Manila\",\n            \"region\": \"NCR\",\n            \"zipCode\": 1100\n        },\n        \"contact\": {\n            \"landlineNumber\": \"455-42-52\",\n            \"mobileNumber\": \"09173942673\",\n            \"email\": \"dianca_cueto@gmail.com\"\n        }\n    },\n    \"jobDetails\": {\n        \"title\": \"Software Engineer\",\n        \"employeeNumber\": \"EMP-1002\",\n        \"location\": \"Buendia Branch\",\n        \"department\": \"Engineering Department\",\n        \"email\": \"diana_cueto@pearlpay.com\",\n        \"salary\": 35000\n    },\n    \"benefitsDetails\": {\n        \"SSS\": \"0407514490\",\n        \"Philhealth\": \"02050905813\",\n        \"PAGIBIG\": \"123456789101\",\n        \"BIR\": \"265683857000\"\n    }\n}"
+        },
+        "url": "https://salty-retreat-89693.herokuapp.com/employees"
+      },
+      "response": []
+    },
+    {
+      "name": "https://salty-retreat-89693.herokuapp.com/employee/5d439c6c84253f0016190531",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"personalDetails\": {\n        \"firstName\": \"Arnold\",\n        \"lastName\": \"Fernandez\",\n        \"middleName\": \"Filamina\",\n        \"gender\": \"Female\",\n        \"title\": \"Ms\",\n        \"address\": {\n            \"unitNumber\": \"3-F\",\n            \"street\": \"Alley 28\",\n            \"city\": \"Quezon City\",\n            \"province\": \"Manila\",\n            \"region\": \"NCR\",\n            \"zipCode\": 1100\n        },\n        \"contact\": {\n            \"landlineNumber\": \"455-42-52\",\n            \"mobileNumber\": \"09173942673\",\n            \"email\": \"dianca_cueto@gmail.com\"\n        }\n    },\n    \"jobDetails\": {\n        \"title\": \"Software Engineer\",\n        \"employeeNumber\": \"EMP-1002\",\n        \"location\": \"Buendia Branch\",\n        \"department\": \"Engineering Department\",\n        \"email\": \"diana_cueto@pearlpay.com\",\n        \"salary\": 35000\n    },\n    \"benefitsDetails\": {\n        \"SSS\": \"0407514490\",\n        \"Philhealth\": \"02050905813\",\n        \"PAGIBIG\": \"123456789101\",\n        \"BIR\": \"265683857000\"\n    }\n}"
+        },
+        "url": "https://salty-retreat-89693.herokuapp.com/employee/5d439c6c84253f0016190531"
+      },
+      "response": []
+    }
+  ]
+}

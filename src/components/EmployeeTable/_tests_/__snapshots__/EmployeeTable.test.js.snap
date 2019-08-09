@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmployeeTable Component test renders EmployeeTable Component 1`] = `
+<div>
+  <div>
+    <h3>
+       PERSONAL DETAILS
+    </h3>
+    <ul>
+      <li>
+         First Name Arnold
+      </li>
+      <li>
+         Middle Name Filamina
+      </li>
+      <li>
+         Last Name Fernandez
+      </li>
+      <li>
+         Gender Female
+      </li>
+      <li>
+         Title 
+      </li>
+      <li>
+        Address3-F Alley 28 Quezon City Manila NCR 1100 
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>
+       CONTACT DETAILS
+    </h3>
+    <ul>
+      <li>
+         Landline 455-42-52
+      </li>
+      <li>
+         Mobile Number 09173942673
+      </li>
+      <li>
+         Email dianca_cueto@gmail.com
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>
+       JOB DETAILS
+    </h3>
+    <ul>
+      <li>
+         Title Software Engineer
+      </li>
+      <li>
+         Employee Number EMP-1002
+      </li>
+      <li>
+         Location Buendia Branch
+      </li>
+      <li>
+         Department Engineering Department
+      </li>
+      <li>
+         Salary 35000
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>
+       EMPLOYEE BENEFITS 
+    </h3>
+    <ul>
+      <li>
+         SSS 0407514490
+      </li>
+      <li>
+         PhilHealth02050905813
+      </li>
+      <li>
+         PAGIBIG 123456789101
+      </li>
+      <li>
+         BIR 265683857000
+      </li>
+    </ul>
+  </div>
+  <button>
+    Update
+  </button>
+</div>
+`;
