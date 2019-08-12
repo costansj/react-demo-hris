@@ -12,9 +12,38 @@ class EmployeeTable extends Component {
     return (
       <div>
         <div>
-          <Typography value="h3">PERSONAL DETAILS</Typography>
+          <Typography variant="h6" component="h6">
+            PERSONAL DETAILS
+          </Typography>
           <ul>
-            <li> First Name {personalDetails.firstName}</li>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center"
+                //justifyContent: "center"
+              }}
+            >
+              <Typography variant="subtitle2" style={{ flexGrow: 1 }}>
+                First Name
+              </Typography>
+              <Typography variant="body2" style={{ flexGrow: 3 }}>
+                : {personalDetails.firstName}
+              </Typography>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center"
+                //justifyContent: "center"
+              }}
+            >
+              <Typography variant="subtitle2" style={{ flexGrow: 1 }}>
+                Middle Name
+              </Typography>
+              <Typography variant="body2" style={{ flexGrow: 3 }}>
+                :{personalDetails.middleName}
+              </Typography>
+            </div>
             <li> Middle Name {personalDetails.middleName}</li>
             <li> Last Name {personalDetails.lastName}</li>
             <li> Gender {personalDetails.gender}</li>

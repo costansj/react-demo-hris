@@ -206,7 +206,9 @@ class EmployeePage extends Component {
                       justifyContent: "space-between"
                     }}
                   >
-                    <Typography variant="h6">Employee Details</Typography>
+                    <Typography variant="h5" component="h5">
+                      Employee Details
+                    </Typography>
                     <IconButton onClick={this.toggleModal}>
                       <CloseIcon />
                     </IconButton>
